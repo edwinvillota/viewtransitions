@@ -1,0 +1,3 @@
+::view-transition-group(*.product-title) {
+	animation-duration: 0.5s;
+}
