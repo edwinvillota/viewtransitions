@@ -1,3 +1,4 @@
+import { ViewTransition } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 
 export const DetailsTemplate = () => {
@@ -8,12 +9,16 @@ export const DetailsTemplate = () => {
 	};
 	return (
 		<div className="flex flex-col gap-2">
-			<div className="flex flex-row bg-slate-200 w-fit px-3 py-2">
-				<button type="button" onClick={handleGoBack}>
+			<ViewTransition name="page-title">
+				<button
+					type="button"
+					onClick={handleGoBack}
+					className="w-fit bg-slate-200 px-3 py-2"
+				>
 					Atras
 				</button>
-			</div>
-			<Outlet></Outlet>
+			</ViewTransition>
+			<Outlet />
 		</div>
 	);
 };

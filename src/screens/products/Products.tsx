@@ -5,8 +5,9 @@ import { MOCKED_PRODUCTS } from '@/common/mocks/product_list';
 const Products = () => {
 	return (
 		<section className="flex flex-col gap-2">
-			<h1>Products</h1>
-
+			<ViewTransition name="page-title">
+				<h1 className="w-fit px-3 py-2 bg-slate-200">Products</h1>
+			</ViewTransition>
 			<div className="grid grid-cols-3 gap-2">
 				{MOCKED_PRODUCTS.map((product) => (
 					<Link key={product.id} to={`/product/${product.id}`}>
