@@ -1,9 +1,1 @@
-::view-transition-group(*.product-title) {
-	animation-duration: 0.5s;
-}
 
-::view-transition-old(page-title),
-::view-transition-new(page-title) {
-	width: auto;
-	height: auto;
-}
