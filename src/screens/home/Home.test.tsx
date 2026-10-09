@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import Products from './Products';
+import HomeScreen from './Home';
 
 describe('Products screen', () => {
 	it('renders the main heading', () => {
-		render(<Products />);
+		render(<HomeScreen />);
 		expect(
 			screen.getByRole('heading', {
-				name: /Products/i,
+				name: /HomeScreen/i,
 			}),
 		).toBeInTheDocument();
 	});

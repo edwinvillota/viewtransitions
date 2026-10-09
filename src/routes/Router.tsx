@@ -1,18 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import { DetailsTemplate, MainTemplate } from '@/components/templates';
-import Products from '@/screens/products/Products';
-import ProductDetails from '../screens/product_details/ProductDetails';
+import { HomeScreen } from '@/screens';
 
 const Router = () => {
 	return (
 		<BrowserRouter useTransitions>
 			<Routes>
-				<Route element={<MainTemplate />}>
-					<Route index element={<Products />} />
-					<Route element={<DetailsTemplate />}>
-						<Route path="/product/:productId" element={<ProductDetails />} />
-					</Route>
-				</Route>
+				<Route index element={<HomeScreen />} />
 			</Routes>
 		</BrowserRouter>
 	);
