@@ -41,7 +41,7 @@ const Title = () => {
 const SearchInput = () => {
 	return (
 		<search className="flex flex-row rounded-xl bg-white border border-(--color-line) min-h-12 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black">
-			<div className="h-full aspect-square flex items-center justify-center">
+			<div className="w-12 shrink-0 flex items-center justify-center">
 				<Search className="text-(--color-muted)" size={20} />
 			</div>
 			<input
