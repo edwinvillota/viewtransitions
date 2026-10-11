@@ -7,15 +7,19 @@ import { ProductsGrid } from './components/products_grid';
 
 const Logo = () => {
 	return (
-		<h3 className="font-black font-(family-name:--font-display) text-2xl">
+		<span className="font-black font-(family-name:--font-display) text-2xl">
 			RIG/
-		</h3>
+		</span>
 	);
 };
 
 const Avatar = () => {
 	return (
-		<span className="flex justify-center items-center rounded-full w-[36px] aspect-square bg-black text-white text-xs font-bold">
+		<span
+			role="img"
+			aria-label="Edwin Villota"
+			className="flex justify-center items-center rounded-full w-[36px] aspect-square bg-black text-white text-xs font-bold"
+		>
 			EV
 		</span>
 	);
@@ -36,27 +40,28 @@ const Title = () => {
 
 const SearchInput = () => {
 	return (
-		<div className="flex flex-row rounded-xl bg-white border border-(--color-line) min-h-12">
+		<search className="flex flex-row rounded-xl bg-white border border-(--color-line) min-h-12 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black">
 			<div className="h-full aspect-square flex items-center justify-center">
 				<Search className="text-(--color-muted)" size={20} />
 			</div>
 			<input
-				type="text"
+				type="search"
+				aria-label="Search parts"
 				className="w-full appearance-none focus:outline-none"
 				placeholder="Search GPUs, CPUs, memory..."
 			/>
-		</div>
+		</search>
 	);
 };
 
 const Chips = () => {
 	return (
-		<div className="flex flex-row gap-2 ">
+		<fieldset aria-label="Filter by category" className="flex flex-row gap-2">
 			<Chip active>GPUs</Chip>
 			<Chip>CPUs</Chip>
 			<Chip>Memory</Chip>
 			<Chip>Storage</Chip>
-		</div>
+		</fieldset>
 	);
 };
 

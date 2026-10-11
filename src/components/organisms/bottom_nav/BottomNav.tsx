@@ -44,6 +44,7 @@ const BottomNavButton: FC<ButtonNavButtonProps> = ({
 	return (
 		<button
 			type="button"
+			aria-current={active ? 'page' : undefined}
 			className={clsx(
 				'flex flex-col flex-1 justify-center items-center p-1 rounded-4xl relative',
 				{
@@ -56,8 +57,12 @@ const BottomNavButton: FC<ButtonNavButtonProps> = ({
 			<span className="text-xs font-(family-name:--font-sans) font-semibold">
 				{label}
 			</span>
+			{isPending && <span className="sr-only">, {pendingCounter} items</span>}
 			{isPending && (
-				<span className="flex h-5 aspect-square bg-(--color-accent) absolute rounded-full border-2 border-white top-1.5 left-[calc(50%+2px)] justify-center items-center text-[10px] text-white font-bold leading-none pl-[1px]">
+				<span
+					aria-hidden="true"
+					className="flex h-5 aspect-square bg-(--color-accent) absolute rounded-full border-2 border-white top-1.5 left-[calc(50%+2px)] justify-center items-center text-[10px] text-white font-bold leading-none pl-[1px]"
+				>
 					{pendingCounter}
 				</span>
 			)}
@@ -79,7 +84,10 @@ export const BottomNav = () => {
 
 	return (
 		<div className="flex px-4 pb-2.5">
-			<nav className="flex h-16 drop-shadow-lg bg-white w-full rounded-4xl p-1.5 gap-1">
+			<nav
+				aria-label="Main"
+				className="flex h-16 shadow-lg bg-white/85 backdrop-blur-xl w-full rounded-4xl p-1.5 gap-1"
+			>
 				{BOTTOM_NAV_BUTTONS.map((button) => (
 					<BottomNavButton
 						key={`${baseId}-${button.label}`}

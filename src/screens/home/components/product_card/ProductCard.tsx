@@ -9,11 +9,11 @@ interface ProductCardProps {
 
 export const ProductCard: FC<ProductCardProps> = ({ product }) => {
 	return (
-		<div className="flex flex-col gap-2.5">
+		<article className="flex flex-col gap-2.5">
 			<div className="relative h-56  rounded-xl overflow-hidden">
 				<img
 					className="h-full w-full object-cover object-center"
-					alt={product.label}
+					alt={product.imageAlt}
 					src={product.gallery[0]}
 				/>
 			</div>
@@ -22,9 +22,9 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
 					<span className="font-(family-name:--font-mono) text-(--color-muted) text-xs">
 						{product.cardMeta}
 					</span>
-					<p className="font-(family-name:--font-display) font-bold text-lg">
+					<h3 className="font-(family-name:--font-display) font-bold text-lg">
 						{product.label}
-					</p>
+					</h3>
 				</div>
 				<div className="flex justify-between items-center">
 					<span className="font-(family-name:--font-sans) text-lg font-bold">
@@ -32,12 +32,13 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
 					</span>
 					<button
 						type="button"
+						aria-label={`Add ${product.label} to cart`}
 						className=" flex justify-center items-center h-9 aspect-square bg-black rounded-full"
 					>
 						<Plus className="text-white" size={20} />
 					</button>
 				</div>
 			</div>
-		</div>
+		</article>
 	);
 };

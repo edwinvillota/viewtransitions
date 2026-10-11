@@ -37,10 +37,7 @@
 		"vitest": "^5.0.3"
 	},
 	"lint-staged": {
-		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
-			"biome check --files-ignore-unknown=true",
-			"biome check --write --no-errors-on-unmatched"
-		]
+		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
 	},
 	"engines": {
 		"node": ">=24.15.0"

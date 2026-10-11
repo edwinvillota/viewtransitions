@@ -7,7 +7,9 @@ interface ChipProps extends PropsWithChildren {
 
 export const Chip: FC<ChipProps> = ({ children, active }) => {
 	return (
-		<div
+		<button
+			type="button"
+			aria-pressed={active}
 			className={clsx(
 				'flex py-2 px-3.5 rounded-3xl font-(family-name:--font-body) font-semibold',
 				{
@@ -17,6 +19,6 @@ export const Chip: FC<ChipProps> = ({ children, active }) => {
 			)}
 		>
 			{children}
-		</div>
+		</button>
 	);
 };

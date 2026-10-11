@@ -15,12 +15,12 @@ interface MainTemplateComponent {
 }
 
 const MainTemplateRoot: React.FC<MainTemplateRootProps> = ({ children }) => {
-	return <div className="flex flex-col  h-dvh">{children}</div>;
+	return <div className="flex flex-col min-h-dvh">{children}</div>;
 };
 
 const MainTemplateHeader: React.FC<MainTemplateHeaderProps> = (props) => {
 	return (
-		<header>
+		<header className="sticky top-0 z-10 bg-(--color-canvas)">
 			<Topbar {...props} />
 		</header>
 	);
@@ -30,16 +30,14 @@ const MainTemplateContent: React.FC<MainTemplateContentProps> = ({
 	children,
 }) => {
 	return (
-		<main className="flex flex-1 flex-col gap-5 px-5 overflow-auto min-h-0">
-			{children}
-		</main>
+		<main className="flex flex-1 flex-col gap-5 px-5 pb-28">{children}</main>
 	);
 };
 
 const MainTemplateFooter: React.FC<MainTemplateFooterProps> = ({
 	children,
 }) => {
-	return <footer className="shrink-0">{children}</footer>;
+	return <footer className="fixed inset-x-0 bottom-0 z-10">{children}</footer>;
 };
 
 export const MainTemplate: MainTemplateComponent = {
