@@ -1,8 +1,10 @@
 import { Search } from 'lucide-react';
+import { Suspense, use } from 'react';
 import { MOCKED_PRODUCTS } from '@/common/mocks/product_list';
 import { Chip } from '@/components/atoms';
 import { BottomNav } from '@/components/organisms';
 import { MainTemplate } from '@/components/templates';
+import { getCategories } from '../../common/api/categories';
 import { ProductsGrid } from './components/products_grid';
 
 const Logo = () => {
@@ -55,12 +57,12 @@ const SearchInput = () => {
 };
 
 const Chips = () => {
+	const categories = use(getCategories());
 	return (
 		<fieldset aria-label="Filter by category" className="flex flex-row gap-2">
-			<Chip active>GPUs</Chip>
-			<Chip>CPUs</Chip>
-			<Chip>Memory</Chip>
-			<Chip>Storage</Chip>
+			{categories.map((category) => (
+				<Chip key={category.id}>{category.label}</Chip>
+			))}
 		</fieldset>
 	);
 };
@@ -72,7 +74,9 @@ const HomeScreen = () => {
 			<MainTemplate.Content>
 				<Title />
 				<SearchInput />
-				<Chips />
+				<Suspense fallback={<span>Loading</span>}>
+					<Chips />
+				</Suspense>
 				<ProductsGrid items={MOCKED_PRODUCTS} />
 			</MainTemplate.Content>
 			<MainTemplate.Footer>

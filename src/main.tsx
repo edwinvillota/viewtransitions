@@ -3,9 +3,18 @@ import { createRoot } from 'react-dom/client';
 import './common/styles/base.css';
 import Router from './routes/Router';
 
-// biome-ignore lint: lint/style/noNonNullAssertion
-createRoot(document.getElementById('root')!).render(
-	<StrictMode>
-		<Router />
-	</StrictMode>,
+async function enableMocking() {
+	const { worker } = await import('./mocks/browser');
+	await worker.start({
+		onUnhandledFrame: 'bypass',
+	});
+}
+
+enableMocking().then(() =>
+	// biome-ignore lint: lint/style/noNonNullAssertion
+	createRoot(document.getElementById('root')!).render(
+		<StrictMode>
+			<Router />
+		</StrictMode>,
+	),
 );
