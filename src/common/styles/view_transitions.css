@@ -1,1 +1,16 @@
+::view-transition-group(chip-pill) {
+	background: var(--color-ink);
+	border-radius: 99999px;
+	animation-duration: var(--duration-chip);
+	animation-timing-function: var(--ease-snappy);
+}
 
+::view-transition-old(chip-pill),
+::view-transition-new(chip-pill) {
+	animation: none;
+	opacity: 0;
+}
+
+::view-transition-group(.chip-label) {
+	z-index: 1;
+}
